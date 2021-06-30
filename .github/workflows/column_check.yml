@@ -1,0 +1,23 @@
+name: Column Check
+on: [push]
+jobs:
+  check_server_db_columns:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check server db columns
+      run: |
+        cd testing/db_columns
+        chmod +x server.sh
+        ./server.sh
+  check_client_db_columns:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check client db columns
+      run: |
+        cd testing/db_columns
+        chmod +x client.sh
+        ./client.sh
