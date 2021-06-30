@@ -1,0 +1,23 @@
+name: Version Check
+on: [push]
+jobs:
+  check_server_db_version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check server db version
+      run: |
+        cd testing/db_version
+        chmod +x server.sh
+        ./server.sh
+  check_client_db_version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Check client db version
+      run: |
+        cd testing/db_version
+        chmod +x client.sh
+        ./client.sh
